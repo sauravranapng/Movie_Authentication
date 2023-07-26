@@ -1,8 +1,56 @@
+<!DOCTYPE html>
+<html>
 
-<h1>
-    You are already logged in ! <br>
-    <a href="<%=redirectURL%>">Click Me to Go Back</a>
-</h1>
-<h2>OR</h2>
+<head>
+    <title>Logged In</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
 
-    <a href="/logout?redirect=<%= encodeURIComponent(redirectURL) %>"><button type="submit">Log Out</button></a>
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>You are already logged in!</h1>
+    <p>
+        <a href="<%=redirectURL%>">Click Here to Go Back</a>
+    </p>
+    <h2>OR</h2>
+    <div class="button-container">
+        <a href="/logout?redirect=<%= encodeURIComponent(redirectURL) %>">
+            <button type="button">Log Out</button>
+        </a>
+    </div>
+</body>
+
+</html>
+

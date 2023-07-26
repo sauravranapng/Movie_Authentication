@@ -1,40 +1,109 @@
-<h1>Login  <%= redirectURL %></h1>
-<% if (messages.error) { %>
-  <%= messages.error %>
-<% } %>
-<form id="loginForm" action="/login" method="post">
-  <!-- Include a hidden input field to hold the 'redirect' parameter -->
-  <input type="hidden" id="redirectInput" name="redirect" value="<%= redirectURL %>">
-  <div>
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" required>
-  </div>
-  <div>
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" required>
-  </div>
-  <button type="submit">Login</button>
-</form>
-<a href="/register">Register</a>
+<!DOCTYPE html>
+<html>
 
-<script>
-  // Function to handle the form submission
-  console.log("in login submit <%= redirectURL %>");
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
 
-  function handleSubmit(event) {
-    // Get the value of the 'redirect' parameter from the form
-    const redirectURL = document.getElementById("redirectInput").value;
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
 
-    // Check if 'redirectURL' is not empty or undefined
-    if (!redirectURL) {
-      event.preventDefault(); // Prevent the form from submitting
-      alert("Invalid redirect URL. Please try again."); // Show an error message
-    }
-  }
+        form {
+            display: inline-block;
+            text-align: left;
+        }
 
-  // Add a submit event listener to the form
-  document.getElementById("loginForm").addEventListener("submit", handleSubmit);
-</script>
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 250px;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Login</h1>
+    <% if (messages.error) { %>
+    <p class="error-message"><%= messages.error %></p>
+    <% } %>
+    <form id="loginForm" action="/login" method="post">
+        <!-- Include a hidden input field to hold the 'redirect' parameter -->
+        <input type="hidden" id="redirectInput" name="redirect" value="<%= redirectURL %>">
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Login</button>
+    </form>
+    <a href="/register">Register</a>
+
+    <script>
+        // Function to handle the form submission
+        console.log("in login submit <%= redirectURL %>");
+
+        function handleSubmit(event) {
+            // Get the value of the 'redirect' parameter from the form
+            const redirectURL = document.getElementById("redirectInput").value;
+
+            // Check if 'redirectURL' is not empty or undefined
+            if (!redirectURL) {
+                event.preventDefault(); // Prevent the form from submitting
+                alert("Invalid redirect URL. Please try again."); // Show an error message
+            }
+        }
+
+        // Add a submit event listener to the form
+        document.getElementById("loginForm").addEventListener("submit", handleSubmit);
+    </script>
+</body>
+
+</html>
 
   
 
